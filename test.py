@@ -8,7 +8,8 @@ from dotenv import load_dotenv
 openai_api_key = os.getenv('OPENAI_API_KEY')
 # Twitter
 import tweepy
-
+load_dotenv()
+app = FastAPI()
 from fastapi.middleware.cors import CORSMiddleware
 
 origins = [
@@ -25,8 +26,7 @@ app.add_middleware(
     allow_headers=[""],
 )
 
-load_dotenv()
-app = FastAPI()
+
 llm = ChatOpenAI(temperature=0, openai_api_key=openai_api_key, model_name='gpt-4')
 
 agreement_template_demos="""
